@@ -1,0 +1,20 @@
+# Yosys synthesis script for MBIST controller
+# Target: Sky130 HD standard cell library
+
+# Read RTL
+read_verilog mbist_ctrl.v
+
+# Synthesize
+synth -top mbist_ctrl
+
+# Map flip-flops to Sky130 cells
+dfflibmap -liberty /home/dyoon06/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Map logic to Sky130 cells
+abc -liberty /home/dyoon06/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Print statistics
+stat -liberty /home/dyoon06/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Write gate-level netlist
+write_verilog -noattr ../results/mbist_ctrl_synth.v
