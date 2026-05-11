@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/home/dyoon06/sram-sky130/module3-physical-design/config/runs/RUN_2026-05-11_19-20-04/tmp/6e6ac762ddc2459da6d673b208c9010a.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/home/dyoon06/sram-sky130/module3-physical-design/config/runs/RUN_2026-05-11_19-20-04/tmp/6e6ac762ddc2459da6d673b208c9010a.bb.v"

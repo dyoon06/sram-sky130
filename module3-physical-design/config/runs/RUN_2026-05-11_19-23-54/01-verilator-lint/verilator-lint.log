@@ -1,0 +1,5 @@
+%Warning-CASEINCOMPLETE: /home/dyoon06/sram-sky130/module2-mbist/rtl/mbist_ctrl.v:53:13: Case values incompletely covered (example pattern 0x7)
+   53 |             case (state)
+      |             ^~~~
+                         ... For warning description see https://verilator.org/warn/CASEINCOMPLETE?v=5.018
+                         ... Use "/* verilator lint_off CASEINCOMPLETE */" and lint_on around source to disable this message.

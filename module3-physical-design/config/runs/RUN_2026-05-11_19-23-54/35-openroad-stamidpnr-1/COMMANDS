@@ -1,0 +1,1 @@
+openroad -exit -no_splash -metrics /home/dyoon06/sram-sky130/module3-physical-design/config/runs/RUN_2026-05-11_19-23-54/35-openroad-stamidpnr-1/or_metrics_out.json /nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/openroad/sta/corner.tcl
