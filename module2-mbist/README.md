@@ -100,9 +100,3 @@ yosys synth_mbist.ys
 cd ../scripts
 python3 plot_coverage.py
 ```
-
-## Resume Bullet
-"Designed synthesizable March C− (10n) MBIST controller in Verilog
-with fault-diagnosis mode; achieved 100% SAF/TF and 72% CF fault
-coverage across 150 fault scenarios; synthesized to 188 cells /
-2,015 µm² in Sky130 via Yosys."
