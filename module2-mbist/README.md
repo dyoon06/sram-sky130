@@ -100,3 +100,14 @@ yosys synth_mbist.ys
 cd ../scripts
 python3 plot_coverage.py
 ```
+### Assertion suite (SVA)
+
+`sva/mbist_sva.sv` binds 12 concurrent assertions and 6 cover
+properties into the controller: FSM/phase legality, reset behavior,
+read-modify-write phase ordering (WE low on read issue, high on
+write fire), address stability across each March element, read-only
+enforcement in the final r1 element, done/CE quiescence, sticky
+fail flagging, and write-once diagnosis capture. Run with
+`bash sva/run_sva.sh` (requires Verilator; Icarus does not support
+concurrent SVA). Both a fault-free run and an injected-SAF run must
+complete with zero assertion errors.
