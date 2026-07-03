@@ -120,3 +120,38 @@ Produced a DRC-clean, LVS-clean, timing-closed layout.
 - Physical design (floorplan, placement, CTS, routing)
 - Static timing analysis
 - DRC/LVS sign-off
+
+## Scope and Limitations
+
+This project is deliberately scoped, and these boundaries are stated here
+so the results are read at the right abstraction level.
+
+**Analog results are schematic-level.** All SNM, write-margin, and sense
+amplifier numbers come from pre-layout netlists. No parasitic extraction
+was performed; post-extraction sense timing would degrade because bitline
+capacitance dominates that path.
+
+**Fault injection is behavioral, not physical.** The MBIST fault coverage
+numbers measure detection of injected *logical* fault models (stuck-at,
+transition, coupling) in a behavioral SRAM model. They are not defect
+coverage of physical failure mechanisms. The defect-to-fault bridge in
+Module 1 (`spice/defect_open_pulldown.sp`) demonstrates one worked example
+of how a physical resistive-open defect maps onto the stuck-at/transition
+fault class that March C− detects.
+
+**March C− has a known coupling-fault gap.** March C− guarantees
+detection of stuck-at, transition, and unlinked idempotent coupling
+faults, but not linked coupling faults or neighborhood pattern-sensitive
+faults. The 72% CF figure reflects that boundary rather than a test
+escape.
+
+**The GDSII is of the MBIST controller only.** Module 3 hardens the
+controller RTL through OpenLane. The SRAM array itself was not placed in
+the floorplan; the OpenRAM Sky130 macro defines the interface the
+controller targets, not a macro instantiated in the layout.
+
+**Verification.** The controller carries an SVA protocol suite
+(`module2-mbist/sva/`) covering FSM legality, read-modify-write phase
+ordering, address stability, sticky failure flagging, and write-once
+diagnosis capture, run under Verilator with both pass-path and
+fail-path stimulus.
