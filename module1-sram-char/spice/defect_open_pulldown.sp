@@ -45,7 +45,7 @@ VBLB BLB GND 1.8
 .control
 set filetype = ascii
 echo * R_open  Qmax_during_read(V)  Qfinal_after_read(V) > ../results/defect_open_pulldown_raw.txt
-foreach rv 1k 3k 10k 30k 100k 300k 1meg 3meg 10meg
+foreach rv 1k 2k 3k 4k 5k 6k 7k 8k 9k 10k 30k 100k
   alter ropen = $rv
   tran 1p 20n
   meas tran qmax MAX v(q) from=2n to=12n
